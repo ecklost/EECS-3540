@@ -14,11 +14,12 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <ctime>
+#include "command-line.h"
 
 using namespace std;
 
 int
-main (int argc, Ptr<char> argv[]) 
+main (int argc, char* argv[]) 
 {
   // Defaults
   uint32_t nFirst = 1;
@@ -59,14 +60,9 @@ main (int argc, Ptr<char> argv[])
   // Output
   ofstream output;
   output.open("freqTable.txt");
-  output << ######################################### << endl;
-  output << ############ Frequency Table ############ << endl;
-  output << ######################################### << endl;
-  output << ## Number ## Frequency ## Time Elapsed ## << endl;
-  output << ######################################### << endl;
   for (uint32_t i = 0; i < size; i++, nFirst++)
     {
-	  output << ## << nFirst << ## << freqArray[i][0] << ## << freqArray[i][1] << ## << endl;
+	  output << "##" << nFirst << "##" << freqArray[i][0] << "##" << freqArray[i][1] << "##" << endl;
 	}		
   output.close();
   
@@ -80,7 +76,7 @@ main (int argc, Ptr<char> argv[])
 }
 
 uint32_t**
-collatz (uint32_t Ptr<freqArray[]>, uint32_t nFirst, uint32_t nSecond)
+collatz (uint32_t *freqArray[], uint32_t nFirst, uint32_t nSecond)
 {
   uint32_t nTally; uint32_t nCurrent;
   time_t start = time(nullptr);
@@ -97,15 +93,15 @@ collatz (uint32_t Ptr<freqArray[]>, uint32_t nFirst, uint32_t nSecond)
 		  i++;
 		  start = time(nullptr);
 		}
-	  else if ((nCurrent / 2) == 0)
+	  else if ((nCurrent % 2) == 0)
 	    {
 		  nCurrent = nCurrent / 2;
-		  tally++;
+		  nTally++;
 		}
 	  else  
 	    {
 		  nCurrent = nCurrent * 3 + 1;
-		  tally++;
+		  nTally++;
 		}
 	}		
   return freqArray;
