@@ -14,12 +14,12 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <ctime>
-#include "command-line.h"
+#include iostream
 
 using namespace std;
 
 int
-main (int argc, char* argv[]) 
+main (int argc, char *argv[]) 
 {
   // Defaults
   uint32_t nFirst = 1;
@@ -28,15 +28,18 @@ main (int argc, char* argv[])
   // Need two starting values 
   if (argc != 2) 
     {
-	  puts ("Specify a range of only two values"); // Input explanation here
+	  cout << "Specify a range of only two values"; // Input explanation here
 	  exit (1);
     }
   
   // Command line values -- see initial block paragraph
-  CommandLine cmd;
+  /*CommandLine cmd;
   cmd.AddValue ("nFirst", "Insert a value to start at.", nFirst);
   cmd.AddValue ("nSecond", "Insert a value to end at.", nSecond);
-  cmd.parse (argc, argv);
+  cmd.parse (argc, argv);*/
+  
+  cout << argv[0] << endl;
+  cout << argv[1] << endl;
   
   // If second value is larger than first, swap values
   if (nSecond < nFirst)
@@ -63,7 +66,7 @@ main (int argc, char* argv[])
   for (uint32_t i = 0; i < size; i++, nFirst++)
     {
 	  output << "##" << nFirst << "##" << freqArray[i][0] << "##" << freqArray[i][1] << "##" << endl;
-	}		
+    }		
   output.close();
   
   // Clean up memory and finish
@@ -78,7 +81,8 @@ main (int argc, char* argv[])
 uint32_t**
 collatz (uint32_t *freqArray[], uint32_t nFirst, uint32_t nSecond)
 {
-  uint32_t nTally; uint32_t nCurrent;
+  uint32_t nTally; 
+  uint32_t nCurrent;
   time_t start = time(nullptr);
   
   for (uint32_t i = 0; i < (nSecond - nFirst);)
@@ -92,17 +96,17 @@ collatz (uint32_t *freqArray[], uint32_t nFirst, uint32_t nSecond)
 		  nTally = 0; nCurrent = 0;
 		  i++;
 		  start = time(nullptr);
-		}
+	    }
 	  else if ((nCurrent % 2) == 0)
 	    {
 		  nCurrent = nCurrent / 2;
 		  nTally++;
-		}
+	    }
 	  else  
 	    {
 		  nCurrent = nCurrent * 3 + 1;
 		  nTally++;
-		}
+	    }
 	}		
   return freqArray;
 }
