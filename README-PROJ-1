@@ -1,19 +1,13 @@
 PROJECT 1 - Collatz Sequence
 
-Author:    Eric C. Klostermeyer <Eric.Klostermeyer@rockets.utoledo.edu>
-Class:     EECS 3540 - Operating Systems and Systems Programming
-Professor: Dr. Gerald Heuring
-Due Date:  February 2, 2016
+Author:     Eric C. Klostermeyer <Eric.Klostermeyer@rockets.utoledo.edu>
+Class:      EECS 3540 - Operating Systems and Systems Programming
+Professor:  Dr. Gerald Heuring
+Due Date:   February 2, 2016
+Unix/Linux: openSUSE
 
-This program gathers a user's input via command line and runs the numbers through the Collatz Sequence. 
-Until the current number reaches one it will undergo two different equations. 
-If it is odd, then the number is tripled and increased by one (3 * n + 1). 
-If it is even, then it is divided by two (n / 2). 
-According to the handout provided for this assignment, the stopping time of a value is "the number of operations that are required to reach one from the initial number". 
-For example, the stopping time of two will be one, since all we have to divide by is 2 once in order to reach one. 
-Another example is three, which has a stopping time of seven -- 3, 10, 5, 16, 8, 4, 2, (stop) 1.
+This program gathers a user's input via command line and runs the numbers through the Collatz Sequence. Until the current number reaches one it will undergo two different equations. If it is odd, then the number is tripled and increased by one (3 * n + 1). If it is even, then it is divided by two (n / 2). According to the handout provided for this assignment, the stopping time of a value is "the number of operations that are required to reach one from the initial number". For example, the stopping time of two will be one, since all we have to divide by is 2 once in order to reach one. Another example is three, which has a stopping time of seven -- 3, 10, 5, 16, 8, 4, 2, (stop) 1.
 
 After all numbers are calculated, it will output a file called 'freqTable.txt'. The results will be shown there.
 
-If no values are entered, the program will cease and ask the user to enter two values. 
-If the second number entered is smaller than the first, then the values are swapped.
+If no values are entered, the program will cease and ask the user to enter two values. If the second number entered is smaller than the first, then the values are swapped.
